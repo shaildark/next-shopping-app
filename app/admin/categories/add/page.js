@@ -18,13 +18,10 @@ export default function CategoriesAddPage() {
     const [error, setError] = useState(false);
     const submitHandler = (e) => {
         e.preventDefault();
+        setError((catName === "") ? true : false);
 
-        if (catName === "") {
-            setError(true);
-        } else {
-            setError(false);
-        }
-        console.log(catName)
+        // Handle Form Submission
+
     }
 
     return (
