@@ -24,9 +24,8 @@ export default function CategoriesPage() {
 
     useEffect(() => {
         const getData = async () => {
-            const tempCat = await allCategories();
-            console.log(tempCat)
-            setCategories(tempCat);
+            const tempCategories = await allCategories();
+            setCategories(tempCategories);
         }
         getData();
 

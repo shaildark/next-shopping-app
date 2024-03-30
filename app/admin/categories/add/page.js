@@ -31,8 +31,6 @@ export default function CategoriesAddPage() {
         }
     }
 
-
-
     return (
         <>
             <form action="" method="POST" onSubmit={submitHandler}>
