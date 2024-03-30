@@ -6,7 +6,7 @@ export async function JsonConvert(data) {
         return await JSON.parse(JSON.stringify(data));
     }
     catch (error) {
-        return [];
+        return false;
     }
 }
 
