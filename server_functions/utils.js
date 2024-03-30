@@ -17,7 +17,7 @@ export async function fileUpload(fileObj, uploadDir, newFileName) {
         const destinationPath = path.join(uploadDir, filename);
         const fileBuffer = await fileObj.arrayBuffer();
         fs.writeFileSync(destinationPath, Buffer.from(fileBuffer));
-        return true;
+        return filename;
     }
     catch (error) {
         return false;
