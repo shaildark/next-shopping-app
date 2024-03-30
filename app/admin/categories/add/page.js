@@ -10,19 +10,28 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
+import { useToast } from "@/components/ui/use-toast"
 import { useState } from "react"
+import { addCategory } from "@/server_functions/category";
 
 export default function CategoriesAddPage() {
-
+    const { toast } = useToast()
     const [catName, setCatName] = useState("");
     const [error, setError] = useState(false);
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
         setError((catName === "") ? true : false);
 
-        // Handle Form Submission
-
+        const result = await addCategory({ name: catName });
+        if (result) {
+            toast({
+                title: "Category",
+                description: "Category added successfully",
+            });
+        }
     }
+
+
 
     return (
         <>
