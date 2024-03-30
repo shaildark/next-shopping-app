@@ -1,5 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 
+const category = require('@/models/category')
+
 export async function GET(request) {
     return NextResponse.json({"hello": "world"}, { status: 200 });
 }
@@ -7,10 +9,16 @@ export async function GET(request) {
 // export async function HEAD(request) {}
  
 export async function POST(request) {
-    const data = await request.json();
-    console.log(data)
-    return NextResponse.json({"hello": "world"}, { status: 200 });
-}
+    try {
+      const allCategory = await category.findAll({
+        attributes:["id", "vName"]
+      });
+      return NextResponse.json({ message: "Categories retrieved successfully", category:allCategory }, { status: 200 });
+    } catch (error) {
+      console.error("Error parsing JSON data:", error);
+      return NextResponse.json({ message: "Invalid request body" }, { status: 400 });
+    }
+  }
  
 // export async function PUT(request) {}
  
